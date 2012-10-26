@@ -14,6 +14,7 @@ data Dzen
     | RO String
     | C String
     | CO String
+    | CA String
     | P String
     | PA String
     | TW
@@ -34,7 +35,8 @@ controlSeqs =     maybeSeq "fg" FG
               <|> try (stringSeq "i" I)
               <|> stringSeq "ib" IB
               <|> try (stringSeq "c" C)
-              <|> stringSeq "co" CO
+              <|> try (stringSeq "co" CO)
+              <|> stringSeq "ca" C
               <|> try (stringSeq "r" R)
               <|> stringSeq "ro" RO
               <|> try (stringSeq "p" P)
