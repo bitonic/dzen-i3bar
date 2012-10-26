@@ -6,11 +6,9 @@ import Control.Monad (void)
 import Text.Parsec
 import Text.Parsec.String
 
-type Color = String
-
 data Dzen
-    = FG (Maybe Color)
-    | BG (Maybe Color)
+    = FG (Maybe String)
+    | BG (Maybe String)
     | I FilePath
     | R String
     | RO String
