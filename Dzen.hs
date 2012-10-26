@@ -22,7 +22,7 @@ data Dzen
     deriving (Show, Eq, Read)
 
 parseDzen :: String -> Either ParseError [Dzen]
-parseDzen = parse dzen ""
+parseDzen = fmap (filter (/= String "")) . parse dzen ""
 
 dzen :: Parser [Dzen]
 dzen = do s <- manyTill anyChar (void (char '^') <|> lookAhead eof)

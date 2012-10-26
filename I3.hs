@@ -4,22 +4,25 @@ module I3 where
 import Text.JSON
 
 data I3 = I3
-    { i3FullText  :: Maybe String
-    , i3ShortText :: Maybe String
-    , i3Color     :: Maybe String
-    , i3Name      :: Maybe String
-    , i3Instance  :: Maybe String
-    , i3Urgent    :: Maybe Bool
+    { fullText  :: Maybe String
+    , shortText :: Maybe String
+    , color     :: Maybe String
+    , name      :: Maybe String
+    , instance_ :: Maybe String
+    , urgent    :: Maybe Bool
     }
     deriving (Show, Read, Eq)
 
+default_ :: I3
+default_ = I3 Nothing Nothing Nothing Nothing Nothing Nothing
+
 toJson :: I3 -> JSValue
-toJson I3 { i3FullText  = ft
-          , i3ShortText = st
-          , i3Color     = c
-          , i3Name      = n
-          , i3Instance  = i
-          , i3Urgent    = u
+toJson I3 { fullText  = ft
+          , shortText = st
+          , color     = c
+          , name      = n
+          , instance_ = i
+          , urgent    = u
           } =
     JSObject $ toJSObject $ concat [ sValue "full_text" ft
                                    , sValue "short_text" st
