@@ -22,5 +22,5 @@ main = do l <- getLine
           case Dzen.parseDzen l of
               Right dzs -> putStrLn . JSON.encode . JSON.JSArray . map I3.toJson .
                            convert $ dzs
-              Left err  -> hPutStr stdout (show err ++ "\n")
+              Left err  -> hPutStr stderr (show err ++ "\n")
           main
